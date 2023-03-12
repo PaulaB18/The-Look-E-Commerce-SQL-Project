@@ -1,0 +1,68 @@
+--First, I created a table with the columns needed for the observation.
+
+SELECT 
+  order_items.order_id,
+  order_items.user_id,
+  users.first_name,
+  users.email,
+  order_items.product_id,
+  products.category,
+  order_items.created_at
+FROM order_items
+LEFT JOIN users ON users.id=order_items.user_id
+LEFT JOIN products ON products.id=order_items.product_id;
+
+CREATE TABLE digital_marketing AS SELECT 
+  order_items.order_id,
+  order_items.user_id,
+  users.first_name,
+  users.email,
+  order_items.product_id,
+  products.category,
+  order_items.created_at
+FROM order_items
+LEFT JOIN users ON users.id=order_items.user_id
+LEFT JOIN products ON products.id=order_items.product_id;
+
+--Then, I extract the date to calculate how long was their last transaction from now(I did this on October 8th,2022).
+
+select user_id,first_name,email,category,DATE(created_at) AS last_purchase_date, AGE (to_date('20221008','yyyymmdd'),DATE(created_at)) AS age_transaksi_terakhir FROM digital_marketing;
+
+--It turned out gave me the months and days instead of the total number of days just like I want, so I changed it into this,
+
+select user_id,first_name,email,category,DATE(created_at) AS last_purchase_date, (to_date('20221008','yyyymmdd')- DATE(created_at)) AS age_transaksi_terakhir FROM digital_marketing;
+
+--Next, create another table,
+
+CREATE TABLE final_digital_marketing AS select user_id,first_name,email,category,DATE(created_at) AS last_purchase_date, (to_date('20221008','yyyymmdd')- DATE(created_at)) AS age_transaksi_terakhir FROM digital_marketing;
+
+SELECT* FROM final_digital_marketing;
+
+--Finally,filter to show only those who purchased the past 90 days,
+
+SELECT 
+user_id,
+first_name,
+email,
+category,
+last_purchase_date,
+age_transaksi_terakhir
+FROM final_digital_marketing 
+WHERE age_transaksi_terakhir<=90
+ORDER BY user_id ASC;
+
+--In the syntax above, I used ASC for the user_id to find out how many customers purchased more than one products.
+
+--I found there are several customers purchased more than once in the past 90 days, so I guess the next step is to rank it.
+
+SELECT x.user_id,x.first_name,x.email,x.category,x.age_transaksi_terakhir
+FROM(
+	SELECT a.*,
+	RANK() OVER(PARTITION BY user_id ORDER BY age_transaksi_terakhir ASC)
+	transaction_seq
+	FROM final_digital_marketing a
+	
+) x
+WHERE transaction_seq=1 AND age_transaksi_terakhir<=90;
+
+--I think the syntax above is worked, yay! And of course there are some customers who purchased a few different products on the same day.
