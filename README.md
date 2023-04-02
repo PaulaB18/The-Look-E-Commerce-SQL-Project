@@ -88,3 +88,7 @@ SELECT country,COUNT(7) AS fourth_winning_product FROM country_sales WHERE produ
 SELECT country,COUNT(7) AS fifth_winning_product FROM country_sales WHERE product_id='8300' GROUP BY country ORDER BY fifth_winning_product DESC;
 -- Hmm...the answer is Spain, way too far from my guess, both Canada and China are not even in the list.
 ```
+
+With the information in hand, the team has created an email campaign featuring the top-performing products. Now, they're gearing up to launch their email marketing campaign and are eager to reach the right audience of users. To do so, they've enlisted the help of the Data Analyst to segment users who have made purchases in the last 90 days.
+
+Below is the SQL syntax that was used to identify the targeted users as requested:
