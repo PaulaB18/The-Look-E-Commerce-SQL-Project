@@ -163,3 +163,48 @@ WHERE transaction_seq=1 AND age_transaksi_terakhir<=90;
 
 --I think the syntax above is worked, yay! And of course there are some customers who purchased a few different products on the same day.
 ```
+
+Beside focusing on boosting the sales, in order to grow the brand, they also wants to increase the customer satisfaction. One of the aspects of the customer satisfaction is the shipping and delivery time, they want to improve the shipping time by improving the work performance of the operation team.
+
+```
+SELECT
+ to_char(created_at,'YYYY-MM') AS ordered_month,
+ AVG(Extract(epoch from(SELECT(shipped_at-created_at)))/3600::int) AS ordered_to_shipped_time
+FROM order_items 
+Where shipped_at is NOT NULL
+GROUP BY ordered_month
+ORDER BY ordered_month DESC;
+
+-- After I run the query, I still curious about the validity of the data, so I checked again with the query below,
+
+SELECT
+ to_char(created_at,'YYYY-MM') AS ordered_month,
+ created_at,
+ shipped_at,
+ Extract(epoch from(SELECT(shipped_at-created_at)))/3600::int AS ordered_to_shipped_time
+FROM order_items
+WHERE shipped_at is NOT NULL;
+
+--After I run the query above, I still found invalid data where the orders has been shipped before receiving the orders.
+-- I don't think it is make sense that the date when the orders are shipped is earlier than the orders are created, except the staff has sixth sense that can read the customers' mind.
+
+-- So, I added another filter as below:
+
+SELECT
+ to_char(created_at,'YYYY-MM') AS ordered_month,
+ created_at,
+ shipped_at,
+ Extract(epoch from(SELECT(shipped_at-created_at)))/3600::int AS ordered_to_shipped_time
+FROM order_items
+WHERE shipped_at is NOT NULL AND shipped_at>created_at;
+
+--Now the data looks more make sense, finally I copied the first query and added that filter.
+
+SELECT
+ to_char(created_at,'YYYY-MM') AS ordered_month,
+ AVG(Extract(epoch from(SELECT(shipped_at-created_at)))/3600::int) AS ordered_to_shipped_time
+FROM order_items 
+Where shipped_at is NOT NULL AND shipped_at>created_at
+GROUP BY ordered_month
+ORDER BY ordered_month DESC;
+```
