@@ -1,0 +1,85 @@
+CREATE TABLE country_sales AS SELECT
+users.id,
+users.country,
+order_items.order_id,
+order_items.created_at,
+order_items.product_id,
+order_items.sale_price,
+products.cost,
+order_items.sale_price-products.cost AS profit
+FROM users
+JOIN order_items
+ON users.id=order_items.user_id
+JOIN products
+ON products.id=order_items.product_id;
+
+CREATE TABLE China_sales AS SELECT
+country,
+to_char(created_at,'YYYY-MM') ordered_month,
+SUM (profit) Monthly_revenue
+FROM country_sales
+WHERE country IN ('China')
+GROUP BY country, ordered_month
+ORDER BY ordered_month;
+
+SELECT
+country,
+ordered_month,
+monthly_revenue,
+LAG(monthly_revenue,1) OVER (ORDER BY ordered_month) previous_month_sales
+FROM China_sales;
+
+
+CREATE TABLE China_report AS SELECT
+country,
+ordered_month,
+monthly_revenue,
+LAG(monthly_revenue,1) OVER (ORDER BY ordered_month) previous_month_sales,
+monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)) AS revenue_growth,
+(monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)))/monthly_revenue AS growth_percentage
+FROM China_sales;
+
+CREATE TABLE Japan_sales AS SELECT
+country,
+to_char(created_at,'YYYY-MM') ordered_month,
+SUM (profit) Monthly_revenue
+FROM country_sales
+WHERE country IN ('Japan')
+GROUP BY country, ordered_month
+ORDER BY ordered_month;
+
+SELECT* FROM Japan_sales;
+
+CREATE TABLE Japan_report AS SELECT
+country,
+ordered_month,
+monthly_revenue,
+LAG(monthly_revenue,1) OVER (ORDER BY ordered_month) previous_month_sales,
+monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)) AS revenue_growth,
+(monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)))/monthly_revenue AS growth_percentage
+FROM Japan_sales;
+
+SELECT* FROM japan_report;
+
+CREATE TABLE SKorea_sales AS SELECT
+country,
+to_char(created_at,'YYYY-MM') ordered_month,
+SUM (profit) Monthly_revenue
+FROM country_sales
+WHERE country IN ('South Korea')
+GROUP BY country, ordered_month
+ORDER BY ordered_month;
+
+SELECT* FROM SKorea_sales;
+
+CREATE TABLE SKorea_report AS SELECT
+country,
+ordered_month,
+monthly_revenue,
+LAG(monthly_revenue,1) OVER (ORDER BY ordered_month) previous_month_sales,
+monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)) AS revenue_growth,
+(monthly_revenue - (LAG(monthly_revenue,1) OVER (ORDER BY ordered_month)))/monthly_revenue AS growth_percentage
+FROM SKorea_sales;
+
+SELECT* FROM SKorea_report;
+
