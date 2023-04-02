@@ -311,7 +311,7 @@ SELECT* FROM SKorea_report;
 
 Lastly, I proudly present my first ever PowerBI dashboard to support the case above:
 
-![First Power BI dashboard.](https://github.com/PaulaB18/The-Look-E-Commerce-SQL-Project/issues/1#issue-1650909303)
+![First Power BI dashboard.](https://user-images.githubusercontent.com/22789086/229349704-65642812-fece-48ee-ae3a-322d12261bc2.jpg)
 
 [![first powe BI dashboard](https://github.com/PaulaB18/The-Look-E-Commerce-SQL-Project/issues/1#issue-1650909303 'First Power BI Dashboard')](https://app.powerbi.com/view?r=eyJrIjoiNzVkMGRkZTMtYTEwNS00ZjYxLTkwNmQtODczOWRlZDI1ZDliIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)
 
