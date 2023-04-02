@@ -89,6 +89,13 @@ SELECT country,COUNT(7) AS fifth_winning_product FROM country_sales WHERE produc
 -- Hmm...the answer is Spain, way too far from my guess, both Canada and China are not even in the list.
 ```
 
+The results of the top 5 winning products are:
+1. The North Face Women's S-XL Oso Jacket
+2. Air Jordan Dominate Shorts Mens
+3. Alpha Industries Rip Stop Short
+4. The North Face Apex Bionic Soft Shell Jacket - Men's
+5. Canada Goose Women's Expedition Parka
+
 With the information in hand, the team has created an email campaign featuring the top-performing products. Now, they're gearing up to launch their email marketing campaign and are eager to reach the right audience of users. To do so, they've enlisted the help of the Data Analyst to segment users who have made purchases in the last 90 days.
 
 Below is the SQL syntax that was used to identify the targeted users as requested:
