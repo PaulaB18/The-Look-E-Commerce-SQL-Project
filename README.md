@@ -90,11 +90,11 @@ SELECT country,COUNT(7) AS fifth_winning_product FROM country_sales WHERE produc
 ```
 
 The results of the top 5 winning products are:
-1. The North Face Women's S-XL Oso Jacket
-2. Air Jordan Dominate Shorts Mens
-3. Alpha Industries Rip Stop Short
-4. The North Face Apex Bionic Soft Shell Jacket - Men's
-5. Canada Goose Women's Expedition Parka
+1. The North Face Women's S-XL Oso Jacket - Here are the countries with the largest markets for this product: China, USA, South Korea, and Brazil.
+2. Air Jordan Dominate Shorts Mens - Here are the countries with the largest markets for this product: Spain, China, Brazil, Germany and USA.
+3. Alpha Industries Rip Stop Short - Here are the countries with the largest markets for this product: China, Brazil, and Spain.
+4. The North Face Apex Bionic Soft Shell Jacket - Men's -Here are the countries with the largest markets for this product: China, USA, Brazil, France and Spain.
+5. Canada Goose Women's Expedition Parka - Here are the countries with the largest markets for this product: Spain, Belgium, Brazil, Japan, and South Korea.
 
 With the information in hand, the team has created an email campaign featuring the top-performing products. Now, they're gearing up to launch their email marketing campaign and are eager to reach the right audience of users. To do so, they've enlisted the help of the Data Analyst to segment users who have made purchases in the last 90 days.
 
