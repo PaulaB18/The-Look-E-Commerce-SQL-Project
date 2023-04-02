@@ -1,4 +1,4 @@
 # The-Look-E-Commerce-SQL-Project
-The Look E-Commerce is a online shop platform that operates worldwide. In this project, we analyze the data to help their digital marketing team set up a new marketing strategic for the next season.
+The Look E-Commerce is a worldwide online shop platform that requires a new marketing strategy for the next season. To assist their digital marketing team, we analyzed data to identify potential markets, products, and customer behaviors that could help drive sales.
 
-We want to find out the potential market, products, and the customer behaviour to help the Digital Marketing team plan the best marketing strategy to boost the sales.
+To begin, we determined the platform's most promising products, also known as "winning products," by analyzing their profitability. Our goal is to assist the Digital Marketing team in creating the most effective marketing strategy to increase sales.
