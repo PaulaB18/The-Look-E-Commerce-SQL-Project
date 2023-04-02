@@ -164,7 +164,7 @@ WHERE transaction_seq=1 AND age_transaksi_terakhir<=90;
 --I think the syntax above is worked, yay! And of course there are some customers who purchased a few different products on the same day.
 ```
 
-Beside focusing on boosting the sales, in order to grow the brand, they also wants to increase the customer satisfaction. One of the aspects of the customer satisfaction is the shipping and delivery time, they want to improve the shipping time by improving the work performance of the operation team.
+In addition to increasing sales, the team also wants to focus on growing the brand and enhancing customer satisfaction. One critical aspect of customer satisfaction is shipping and delivery times, and the team is committed to improving these metrics by enhancing the performance of the operations team.
 
 ```
 SELECT
