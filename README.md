@@ -220,7 +220,7 @@ Recommendation to improve the performance of the operational team
 
 At this stage, I believe the best course of action is to conduct further research into the order fulfillment process. This will allow us to identify where the bottlenecks occur, who is involved in the process, and which stages are taking the longest time. Many factors can contribute to these delays, including late supplier deliveries or a shortage of packaging staff. By conducting additional research, we can gain a better understanding of the root causes of these issues, and develop more targeted solutions. Without conducting further research, we risk making assumptions about who may be responsible for delays in the fulfillment process.
 
-The Marketing Team has identified East Asia as a highly promising market, and they are eager to target this region in order to boost sales revenue. Specifically, they plan to closely monitor sales in China, Japan, and South Korea.
+Finally, the Marketing Team has identified East Asia as a highly promising market, and they are eager to target this region in order to boost sales revenue. Specifically, they plan to closely monitor sales in China, Japan, and South Korea.
 
 ```
 CREATE TABLE country_sales AS SELECT
